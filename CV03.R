@@ -43,3 +43,22 @@ Cokolada <- function(M, r, s){
 M <- matrix(c(3,0,0,0,1,4,0,0,5,3,0,0,1,2,6,7), nrow=4, ncol=4, byrow=TRUE)
 pocetDilku <- Cokolada(M,1,1)
 
+
+CokoladaIter <- function(M){
+  s = dim(M)
+  k1 <- seq(from=s[1]-1, to=1, by=-1)
+  
+  for (r in k1){
+    k2 <- seq(from=r, to=1, by=-1)
+    for (s in k2){
+      Cdolu <- M[r+1,s] + M[r,s]
+      Csikmo <- M[r+1,s+1] + M[r,s]
+      M[r,s] <- max(c(Cdolu,Csikmo))
+      print(M)
+    }
+  }
+  
+  return(M[1,1])
+}
+
+pocetDilku <- CokoladaIter(M)
