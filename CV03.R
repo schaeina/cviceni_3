@@ -62,3 +62,20 @@ CokoladaIter <- function(M){
 }
 
 pocetDilku <- CokoladaIter(M)
+
+
+HanojskaVez <- function(n, zKoliku, naKolik){
+  if (n == 1){
+    print(paste(unlist(c('Presun disk z koliku ', as.character(zKoliku), ' na kolik ', as.character(naKolik), '.')), collapse=''))
+  }
+  else {
+    volnyKolik <- 6 - zKoliku - naKolik
+    HanojskaVez(n-1, zKoliku, volnyKolik)
+    print(paste(unlist(c('Presun disk z koliku ', as.character(zKoliku), ' na kolik ', as.character(naKolik), '.')), collapse=''))
+    HanojskaVez(n-1, volnyKolik, naKolik)
+  }
+}
+
+HanojskaVez(3,1,3)
+
+
